@@ -12,8 +12,8 @@ class ViewController: UIViewController {
     private let mylabel : UILabel = {
         let label = UILabel()
         label.text = "CHECK A VALUE IS ODD AND EVAN "
-        label.backgroundColor = .black
-        label.textColor = .white
+        
+        label.textColor = .black
      
         label.textAlignment = .center
         return label
@@ -25,7 +25,8 @@ class ViewController: UIViewController {
         txtfield.backgroundColor = .white
         txtfield.textColor = .black
         txtfield.layer.borderColor = UIColor.black.cgColor
-        txtfield.layer.borderWidth = 4
+        txtfield.layer.borderWidth = 1
+        
         txtfield.textAlignment = .center
         return txtfield
     }()
@@ -41,6 +42,7 @@ class ViewController: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.addSubview(mylabel)
         view.addSubview(mytxtbox)
         view.addSubview(btncheck)
