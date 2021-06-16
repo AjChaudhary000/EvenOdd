@@ -10,20 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private let mylabel : UILabel = {
-        let label = UILabel()
-        label.text = "CHECK A VALUE IS ODD AND EVAN "
-        
-        label.textColor = .white
-        label.font = label.font.withSize(30)
-        label.font = UIFont(name:"LastResort", size: 20.0)
-        label.font = UIFont.italicSystemFont(ofSize: 20.0)
-        label.shadowColor = .gray
-        label.shadowOffset = CGSize(width: 3, height: 4)
-        label.layer.shadowOpacity = 0.8
-        label.textAlignment = .center
-        return label
-    }()
+    
     private let mytxtbox:UITextField = {
         let txtfield = UITextField()
         txtfield.layer.cornerRadius = 10
@@ -42,12 +29,12 @@ class ViewController: UIViewController {
         btn.backgroundColor = .black
         btn.layer.borderWidth = 3
         btn.layer.borderColor = UIColor.white.cgColor
-        btn.layer.cornerRadius = 30
+        btn.layer.cornerRadius = 10
         btn.addTarget(self, action: #selector(checkvalue), for: .touchUpInside)
         return btn
     }()
     private let image:UIImageView = {
-        let img = UIImageView(image:UIImage(named: "car"))
+        let img = UIImageView(image:UIImage(named: "BGBG@"))
         
         return img
     }()
@@ -55,31 +42,70 @@ class ViewController: UIViewController {
     
     private let myview:UIView = {
         let  vw = UIView()
-        vw.backgroundColor = .white
+        vw.backgroundColor = .blue
+        vw.layer.cornerRadius = 12
+        vw.layer.opacity = 0.22
         return vw
+    }()
+    private let myview1:UIView = {
+        let  vw1 = UIView()
+        vw1.backgroundColor = .white
+        vw1.layer.cornerRadius = 12
+        vw1.layer.opacity = 1
+        return vw1
+    }()
+    private let myview2:UIView = {
+        let  vw3 = UIView()
+        vw3.backgroundColor = .white
+        vw3.layer.cornerRadius = 15
+        vw3.layer.opacity = 0.90
+        return vw3
+    }()
+    private let mylable1:UILabel = {
+        let  vw2 = UILabel()
+        
+        vw2.text = "Odd Even Checked"
+        vw2.textAlignment = .center
+        
+        return vw2
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         view.addSubview(image)
-        view.addSubview(mylabel)
+        
         view.addSubview(myview)
+        view.addSubview(myview2)
+        view.addSubview(mylable1)
+        
+        view.addSubview(myview1)
+        
         view.addSubview(mytxtbox)
         view.addSubview(btncheck)
         
         // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {
-        mylabel.frame = CGRect(x: 20, y: 70, width: view.frame.size.width - 40, height: 50)
-        mytxtbox.frame = CGRect(x: 70, y: (view.frame.size.height / 2 ) + 30, width: 200, height: 50)
-        btncheck.frame = CGRect(x: 100, y: (view.frame.size.height / 2 ) - 60, width: view.frame.size.width - 180, height: 50)
+        
+        mytxtbox.frame = CGRect(x: 79, y: 442, width: 214, height: 35)
+        btncheck.frame = CGRect(x: 115, y:504,width: 150, height: 40)
         image.frame =  CGRect(x:0, y:0, width: 375, height: 675)
-        myview.frame = CGRect(x:40, y: (view.frame.size.height / 2 ) - 30, width: 290, height: 250)
+        myview.frame = CGRect(x:8, y: 334, width: 357, height: 340)
+        myview1.frame = CGRect(x:54, y: 409, width: 267, height: 171)
+        mylable1.frame = CGRect(x:97, y: 317, width: 181, height: 33)
+        myview2.frame = CGRect(x:97, y: 317, width: 181, height: 33)
+        
     }
     @objc func checkvalue(){
         let cn = checknum()
         guard let txtnumber = Int(mytxtbox.text!) else {
             print("Wrong input....")
+            let alert = UIAlertController(title: "Opps", message: "Please Enter proper Value.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+            DispatchQueue.main.async  {
+                self.present(alert, animated: true)
+            }
+            
             return
         }
         if txtnumber % 2 == 0 {
